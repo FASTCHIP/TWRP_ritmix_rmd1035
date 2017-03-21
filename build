@@ -1,0 +1,17 @@
+#!/bin/bash
+sources="/home/fastchip/omni"
+vendor="ritmix"
+device="rmd1035"
+
+for file in ${sources}/device/${vendor}/${device}/BoardConfigs/*; do 
+  name=`basename $file|sed -E 's (.+)_BoardConfig.mk \1 g'`
+  echo "Building $name"
+  cp $file ${sources}/device/${vendor}/${device}/BoardConfig.mk
+  cd ${sources}/
+  . build/envsetup.sh 
+  lunch cm_${device}-eng
+  make installclean
+  make recoveryimage -j3
+  cp ${sources}/out/target/product/${device}/recovery.img ${sources}/${name}_recovery.img
+done
+rm ${sources}/device/${vendor}/${device}/BoardConfig.mk
