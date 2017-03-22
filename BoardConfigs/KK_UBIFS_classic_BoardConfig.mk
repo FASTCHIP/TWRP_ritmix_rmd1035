@@ -38,7 +38,8 @@ TARGET_SIMULATOR := false
 TARGET_PROVIDES_INIT_RC := true
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
-
+#"/sys/class/android_usb/android0/f_mass_storage/lun0/file"
+#"/sys/class/android_usb/android0/f_mass_storage/lun1/file"
 # TWRP
 # # RECOVERY_GRAPHICS_USE_LINELENGTH := true
 # # TW_EXCLUDE_SUPERSU := true
